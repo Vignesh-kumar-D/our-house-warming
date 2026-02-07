@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="3D house illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#eef5ff"/>
+      <stop offset="1" stop-color="#d9e7f7"/>
+    </linearGradient>
+
+    <linearGradient id="roofTop" x1="0" x2="1">
+      <stop offset="0" stop-color="#2d3f56"/>
+      <stop offset="0.55" stop-color="#1e2e43"/>
+      <stop offset="1" stop-color="#3d5671"/>
+    </linearGradient>
+    <linearGradient id="roofSide" x1="0" x2="1">
+      <stop offset="0" stop-color="#24364c"/>
+      <stop offset="1" stop-color="#132235"/>
+    </linearGradient>
+
+    <linearGradient id="wallFront" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6f1e8"/>
+      <stop offset="1" stop-color="#e8dfd0"/>
+    </linearGradient>
+    <linearGradient id="wallSide" x1="0" x2="1">
+      <stop offset="0" stop-color="#e4d8c6"/>
+      <stop offset="1" stop-color="#d3c5b1"/>
+    </linearGradient>
+
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#eaf4ff" stop-opacity="0.9"/>
+      <stop offset="0.55" stop-color="#b9d2ea" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#6f8faa" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18" result="blur"/>
+      <feOffset dx="0" dy="22" result="off"/>
+      <feColorMatrix in="off" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.35 0" result="col"/>
+      <feMerge>
+        <feMergeNode in="col"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+    <linearGradient id="base" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#dfe7f2"/>
+      <stop offset="1" stop-color="#c7d3e2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Transparent background; keep only house -->
+  <g filter="url(#shadow)">
+    <!-- Ground/base shadow -->
+    <ellipse cx="610" cy="990" rx="360" ry="90" fill="#0b1020" opacity="0.18" filter="url(#soft)"/>
+
+    <!-- Isometric base platform -->
+    <path d="M290 955 L610 1110 L1030 900 L710 750 Z" fill="url(#base)" stroke="#9fb3c8" stroke-opacity="0.45" stroke-width="6"/>
+
+    <!-- Side wall -->
+    <path d="M710 420 L1030 570 L1030 900 L610 1110 L610 780 Z" fill="url(#wallSide)" stroke="#b7aa98" stroke-opacity="0.55" stroke-width="6"/>
+
+    <!-- Front wall -->
+    <path d="M290 475 L610 320 L710 420 L610 520 Z" fill="url(#wallFront)" stroke="#c9bdab" stroke-opacity="0.65" stroke-width="6"/>
+    <path d="M290 475 L610 520 L610 1110 L290 955 Z" fill="url(#wallFront)" stroke="#c9bdab" stroke-opacity="0.65" stroke-width="6"/>
+
+    <!-- Roof top -->
+    <path d="M610 160 L980 370 L710 420 L340 210 Z" fill="url(#roofTop)" stroke="#0f1b2a" stroke-opacity="0.7" stroke-width="6"/>
+    <!-- Roof side -->
+    <path d="M980 370 L980 410 L710 465 L710 420 Z" fill="url(#roofSide)" opacity="0.98"/>
+    <path d="M610 160 L980 370 L1030 570 L650 360 Z" fill="url(#roofSide)" opacity="0.96"/>
+
+    <!-- Roof highlight line -->
+    <path d="M360 214 L610 330 L960 372" fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- Door -->
+    <g>
+      <path d="M420 610 L560 530 L560 920 L420 990 Z" fill="#f2ece2" stroke="#cbbfaa" stroke-width="5"/>
+      <path d="M448 635 L532 590 L532 900 L448 940 Z" fill="#1f2f44" opacity="0.95"/>
+      <circle cx="510" cy="765" r="10" fill="#b9923a" opacity="0.85"/>
+      <path d="M442 650 L538 604" stroke="#ffffff" stroke-opacity="0.16" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Windows (front) -->
+    <g>
+      <path d="M330 620 L400 580 L400 720 L330 760 Z" fill="url(#glass)" stroke="#b7aa98" stroke-width="5"/>
+      <path d="M590 490 L660 450 L660 590 L590 630 Z" fill="url(#glass)" stroke="#b7aa98" stroke-width="5"/>
+      <path d="M330 690 L400 650" stroke="#ffffff" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round"/>
+      <path d="M590 560 L660 520" stroke="#ffffff" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- Windows (side) -->
+    <g opacity="0.98">
+      <path d="M760 585 L900 665 L900 780 L760 700 Z" fill="url(#glass)" stroke="#b7aa98" stroke-width="5"/>
+      <path d="M760 640 L900 720" stroke="#ffffff" stroke-opacity="0.18" stroke-width="5" stroke-linecap="round"/>
+      <path d="M830 622 L830 756" stroke="#0f1b2a" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- Balcony rail (side) -->
+    <g opacity="0.85">
+      <path d="M710 520 L980 675" stroke="#1b2a3f" stroke-opacity="0.45" stroke-width="8" stroke-linecap="round"/>
+      <path d="M710 560 L980 715" stroke="#1b2a3f" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round"/>
+      <path d="M770 548 L770 690" stroke="#1b2a3f" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round"/>
+      <path d="M840 590 L840 730" stroke="#1b2a3f" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round"/>
+      <path d="M910 632 L910 770" stroke="#1b2a3f" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Front steps -->
+    <g opacity="0.95">
+      <path d="M360 990 L560 920 L670 980 L470 1050 Z" fill="#d7dfeb" stroke="#9fb3c8" stroke-opacity="0.5" stroke-width="5"/>
+      <path d="M400 960 L560 900 L630 940 L470 1000 Z" fill="#e6eef9" opacity="0.9"/>
+      <path d="M440 930 L560 880 L590 900 L470 950 Z" fill="#f2f7ff" opacity="0.85"/>
+    </g>
+  </g>
+</svg>

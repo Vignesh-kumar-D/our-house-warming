@@ -1,0 +1,24 @@
+---
+description: Invitation files must be A6 (105×148mm) print-ready
+globs: invitation/**/*
+alwaysApply: false
+---
+
+# Invitation (A6 print-ready) rules
+
+- Keep `invitation/` output **print-ready A6**: \(105mm × 148mm\).
+- Use **mm units** for layout/typography where possible; avoid px-only sizing for print.
+- Invitation template structure (keep these sections present in `invitation/index.html`):
+  - Top invocation text: **"om Pachai amman thunai"**
+  - A **title** (editable)
+  - A main image using a local house asset (prefer `invitation/house3d.svg` for crisp print; `invitation/house.png` is acceptable)
+  - **Date and time** of the event (editable)
+- Ensure print correctness:
+  - `@page { size: 105mm 148mm; margin: 0; }`
+  - The card container must be exactly `width: 105mm; height: 148mm;`
+  - Use `print-color-adjust: exact` (and `-webkit-print-color-adjust`) when using backgrounds.
+- Screen vs print:
+  - Screen can have 3D/hover effects, deep shadows, and perspective.
+  - Print must be **flat and clean** (no reliance on hover/animation to look good).
+- Avoid external network dependencies (CDN fonts/images). If needed, prefer local assets under `invitation/assets/`.
+

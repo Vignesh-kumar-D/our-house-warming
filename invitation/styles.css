@@ -1,0 +1,309 @@
+/* Invitation card: A6 (105mm × 148mm) print-ready */
+
+:root {
+  --page-w: 105mm;
+  --page-h: 148mm;
+
+  --ink: rgba(18, 26, 38, 0.9);
+  --muted: rgba(18, 26, 38, 0.62);
+
+  /* Blue 3D frame palette (reference-inspired) */
+  --blue-0: #f0f5fb;
+  --blue-1: #cddbeb;
+  --blue-2: #9fb9d3;
+  --blue-3: #6f8faa;
+  --blue-4: #4d6a86;
+  --blue-5: #2f4760;
+
+  --panel: #f4f1ea;
+  --panel-2: #efe9df;
+
+  --shadow: rgba(0, 0, 0, 0.34);
+  --shadow-soft: rgba(0, 0, 0, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--ink);
+  background:
+    radial-gradient(900px 560px at 20% 12%, rgba(159, 185, 211, 0.35), transparent 55%),
+    radial-gradient(980px 520px at 80% 80%, rgba(205, 219, 235, 0.28), transparent 58%),
+    linear-gradient(180deg, #0b1020 0%, #070a13 100%);
+}
+
+.page {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  perspective: 950px;
+}
+
+.card {
+  width: var(--page-w);
+  height: var(--page-h);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--blue-3) 0%, var(--blue-5) 100%);
+  box-shadow:
+    0 18px 55px var(--shadow),
+    0 8px 18px var(--shadow-soft);
+  transform-style: preserve-3d;
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+/* Base “paper + depth” */
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(420px 240px at 52% 38%, rgba(255, 255, 255, 0.08), transparent 62%),
+    radial-gradient(520px 260px at 20% 10%, rgba(205, 219, 235, 0.22), transparent 60%),
+    radial-gradient(420px 220px at 80% 92%, rgba(159, 185, 211, 0.22), transparent 62%),
+    repeating-linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+/* Inner frame line */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 6mm;
+  border: 0.25mm solid rgba(240, 245, 251, 0.45);
+  box-shadow:
+    inset 0 0 0 0.25mm rgba(16, 24, 38, 0.12),
+    inset 0 0 0 0.7mm rgba(240, 245, 251, 0.14);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Floral-ish “3D” clusters (pure CSS gradients) */
+.floral {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 3mm 6mm rgba(0, 0, 0, 0.25));
+}
+
+.floral--top {
+  left: -6mm;
+  top: -8mm;
+  width: 86mm;
+  height: 34mm;
+  transform: translateZ(12px);
+  background:
+    radial-gradient(circle at 22% 62%, rgba(240, 245, 251, 0.9) 0 7mm, transparent 7.2mm),
+    radial-gradient(circle at 30% 58%, rgba(205, 219, 235, 0.9) 0 6mm, transparent 6.2mm),
+    radial-gradient(circle at 42% 58%, rgba(240, 245, 251, 0.85) 0 7.5mm, transparent 7.7mm),
+    radial-gradient(circle at 54% 55%, rgba(159, 185, 211, 0.7) 0 6.5mm, transparent 6.7mm),
+    radial-gradient(circle at 64% 62%, rgba(240, 245, 251, 0.9) 0 5.8mm, transparent 6mm),
+    radial-gradient(circle at 70% 56%, rgba(205, 219, 235, 0.85) 0 6.5mm, transparent 6.7mm),
+    radial-gradient(circle at 78% 64%, rgba(240, 245, 251, 0.82) 0 5.4mm, transparent 5.6mm),
+    radial-gradient(34mm 18mm at 50% 70%, rgba(47, 71, 96, 0.45), transparent 70%);
+  opacity: 0.92;
+}
+
+.floral--right {
+  right: -10mm;
+  top: 18mm;
+  width: 40mm;
+  height: 98mm;
+  transform: translateZ(10px);
+  background:
+    radial-gradient(circle at 40% 16%, rgba(205, 219, 235, 0.75) 0 8mm, transparent 8.2mm),
+    radial-gradient(circle at 66% 24%, rgba(240, 245, 251, 0.82) 0 6.6mm, transparent 6.8mm),
+    radial-gradient(circle at 42% 44%, rgba(159, 185, 211, 0.62) 0 7.2mm, transparent 7.4mm),
+    radial-gradient(circle at 62% 58%, rgba(240, 245, 251, 0.82) 0 6.8mm, transparent 7mm),
+    radial-gradient(circle at 46% 78%, rgba(205, 219, 235, 0.72) 0 8.5mm, transparent 8.7mm),
+    radial-gradient(28mm 60mm at 30% 55%, rgba(47, 71, 96, 0.35), transparent 70%);
+  opacity: 0.9;
+}
+
+.floral--bottom {
+  right: -10mm;
+  bottom: -14mm;
+  width: 62mm;
+  height: 54mm;
+  transform: translateZ(14px);
+  background:
+    radial-gradient(circle at 62% 54%, rgba(240, 245, 251, 0.92) 0 12mm, transparent 12.3mm),
+    radial-gradient(circle at 66% 54%, rgba(205, 219, 235, 0.85) 0 9mm, transparent 9.2mm),
+    radial-gradient(circle at 70% 54%, rgba(159, 185, 211, 0.7) 0 6mm, transparent 6.2mm),
+    radial-gradient(circle at 54% 70%, rgba(240, 245, 251, 0.78) 0 7.2mm, transparent 7.4mm),
+    radial-gradient(40mm 26mm at 55% 68%, rgba(47, 71, 96, 0.45), transparent 70%);
+  opacity: 0.92;
+}
+
+/* Central “paper” panel */
+.panel {
+  position: absolute;
+  left: 26mm;
+  top: 14mm;
+  right: 12mm;
+  height: 78mm;
+  padding: 8mm 7mm 7mm;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+  border: 0.25mm solid rgba(240, 245, 251, 0.6);
+  box-shadow:
+    0 10mm 18mm rgba(0, 0, 0, 0.25),
+    0 2.5mm 6mm rgba(0, 0, 0, 0.18),
+    inset 0 0 0 0.25mm rgba(47, 71, 96, 0.14);
+  transform: translateZ(16px);
+  z-index: 3;
+}
+
+.invocation {
+  margin: 0;
+  font-size: 2.8mm;
+  letter-spacing: 0.08em;
+  color: rgba(47, 71, 96, 0.86);
+}
+
+.title {
+  margin: 2mm 0 0 0;
+  font-size: 6mm;
+  line-height: 1.06;
+  letter-spacing: 0.02em;
+  font-weight: 750;
+  color: rgba(18, 26, 38, 0.92);
+}
+
+.subtitle {
+  margin: 2mm 0 0 0;
+  font-size: 3.2mm;
+  color: rgba(18, 26, 38, 0.7);
+}
+
+.when {
+  margin-top: 6mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+
+.when__item {
+  padding: 2.4mm 2.2mm;
+  border: 0.25mm solid rgba(47, 71, 96, 0.18);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.when__label {
+  font-size: 2.5mm;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(47, 71, 96, 0.72);
+}
+
+.when__value {
+  margin-top: 1mm;
+  font-size: 3.5mm;
+  color: rgba(18, 26, 38, 0.88);
+}
+
+/* House “3D cutout” (use real PNG + layered lighting) */
+.houseWrap {
+  position: absolute;
+  left: 5mm;
+  bottom: 6mm;
+  width: 52mm;
+  transform: translateZ(26px) rotateY(-6deg) rotate(-1.2deg);
+  z-index: 4;
+}
+
+.houseWrap::before {
+  content: "";
+  position: absolute;
+  left: 6mm;
+  right: -2mm;
+  bottom: -3mm;
+  height: 16mm;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.42), transparent 72%);
+  filter: blur(2.2mm);
+  transform: skewX(-12deg);
+  opacity: 0.9;
+}
+
+.houseWrap::after {
+  content: "";
+  position: absolute;
+  inset: -2.5mm -2mm -2mm -2.5mm;
+  background: radial-gradient(70% 60% at 35% 25%, rgba(240, 245, 251, 0.55), transparent 60%);
+  filter: blur(1.6mm);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.house3d {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  /* color grade to fit the blue frame */
+  filter:
+    saturate(0.92)
+    contrast(1.06)
+    brightness(0.98)
+    hue-rotate(-8deg)
+    drop-shadow(0 6mm 10mm rgba(0, 0, 0, 0.34))
+    drop-shadow(0 2mm 5mm rgba(0, 0, 0, 0.2))
+    drop-shadow(0 0 0.9mm rgba(240, 245, 251, 0.55));
+}
+
+/* Subtle 3D on screen (never required for print) */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: rotateX(2.4deg) rotateY(-2.8deg) translateY(-1mm);
+    box-shadow:
+      0 28px 80px rgba(0, 0, 0, 0.48),
+      0 12px 26px rgba(0, 0, 0, 0.26);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* Print: exact card size with no extra margins */
+@page {
+  size: 105mm 148mm;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+  .page {
+    padding: 0;
+    perspective: none;
+  }
+  .card {
+    box-shadow: none;
+    width: var(--page-w);
+    height: var(--page-h);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    transform: none;
+  }
+}
+
