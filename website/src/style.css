@@ -261,13 +261,13 @@ section {
 }
 
 .icon-btn--wa:hover svg {
-  fill: #25d366;
-  filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.6));
+  fill: #3aaf4c;
+  filter: drop-shadow(0 0 8px rgba(58, 175, 76, 0.6));
 }
 
 .icon-btn--wa:hover {
-  background: rgba(37, 211, 102, 0.12);
-  border-color: rgba(37, 211, 102, 0.35);
+  background: rgba(58, 175, 76, 0.12);
+  border-color: rgba(58, 175, 76, 0.35);
 }
 
 .icon-btn--call:hover svg {
