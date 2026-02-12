@@ -169,6 +169,7 @@ section {
    BUTTONS
    ========================================================= */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -181,23 +182,71 @@ section {
   background: var(--bg-card);
   color: var(--text);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  cursor: pointer;
   transition:
-    transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease;
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease,
+    letter-spacing 220ms ease;
+}
+
+/* Continuous shimmer sweep on hover */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 42%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 58%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  animation: shimmer-sweep 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
   background: var(--bg-raised);
-  border-color: rgba(201, 169, 110, 0.3);
+  border-color: rgba(201, 169, 110, 0.5);
+  color: var(--accent);
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(201, 169, 110, 0.2);
+  animation: glow-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 10px 36px rgba(0, 0, 0, 0.45),
+      0 0 18px rgba(201, 169, 110, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.5),
+      0 0 32px rgba(201, 169, 110, 0.35);
+  }
 }
 
 .btn:active {
-  transform: translateY(0) scale(0.97);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(1px) scale(0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  animation: none;
+  transition-duration: 80ms;
 }
 
 .btn:focus-visible {
@@ -205,16 +254,56 @@ section {
   outline-offset: 3px;
 }
 
+/* Gold CTA variant */
 .btn--gold {
   background: linear-gradient(135deg, var(--accent), var(--wood));
   color: #0a0908;
   border-color: transparent;
   font-weight: 700;
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.3),
+    0 0 0 0 rgba(201, 169, 110, 0);
 }
 
 .btn--gold:hover {
-  background: linear-gradient(135deg, var(--accent-hover), #c09b72);
-  border-color: transparent;
+  background: linear-gradient(135deg, #e0c07a, var(--accent));
+  border-color: rgba(255, 220, 140, 0.5);
+  color: #0a0908;
+  animation: gold-glow-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes gold-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 10px 36px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(201, 169, 110, 0.3),
+      0 0 40px rgba(201, 169, 110, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 12px 44px rgba(0, 0, 0, 0.45),
+      0 0 32px rgba(201, 169, 110, 0.5),
+      0 0 60px rgba(201, 169, 110, 0.2);
+  }
+}
+
+.btn--gold:active {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 14px rgba(201, 169, 110, 0.25);
+  animation: none;
+}
+
+/* Gold shimmer is warmer and brighter */
+.btn--gold::after {
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 42%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.25) 58%,
+    transparent 70%
+  );
 }
 
 /* =========================================================
