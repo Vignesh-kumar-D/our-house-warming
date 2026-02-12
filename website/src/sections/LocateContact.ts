@@ -66,8 +66,8 @@ function ContactCard(c: Contact): HTMLElement {
   const actions = document.createElement("div");
   actions.className = "contact-card__actions";
   actions.append(
-    iconLink(waHref(c.phone), `WhatsApp ${c.name}`, iconWhatsApp(), "wa"),
     iconLink(telHref(c.phone), `Call ${c.name}`, iconPhone(), "call"),
+    iconLink(waHref(c.phone), `WhatsApp ${c.name}`, iconWhatsApp(), "wa"),
   );
 
   card.append(nameEl, phoneEl, actions);

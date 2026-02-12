@@ -409,8 +409,14 @@ section {
 @media (min-width: 860px) {
   .locate-contact__grid {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: stretch;
   }
+}
+
+/* Cards inside the grid fill their cell */
+.locate-contact__grid > .card {
+  width: 100%;
+  min-width: 0;
 }
 
 /* Map */

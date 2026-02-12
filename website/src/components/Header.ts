@@ -10,7 +10,7 @@ export function Header(): HTMLElement {
 
   header.innerHTML = `
     <div class="container header__inner">
-      <span class="header__title">Bhuvaneshwari Illam</span>
+      <span class="header__title">BHUVANESHWARI ILLAM</span>
     </div>
   `;
 
