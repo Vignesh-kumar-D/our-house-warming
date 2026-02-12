@@ -20,6 +20,11 @@ export function Welcome(): HTMLElement {
         a place of togetherness, gratitude, and cherished moments.
         We are happy to share this space and this joy with you.
       </p>
+      <p class="welcome__hosted" data-anim="welcome">
+        <strong>Hosted by</strong><br/>
+        G Devaraj · D Bhuvaneshwari ·
+        D Vignesh Kumar · D Tarun Kumar
+      </p>
     </div>
   `;
 

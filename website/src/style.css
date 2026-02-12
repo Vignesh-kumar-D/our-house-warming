@@ -393,6 +393,19 @@ section {
   font-weight: 700;
 }
 
+.welcome__hosted {
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.welcome__hosted strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* =========================================================
    SECTION 3 — LOCATE & CONTACT
    ========================================================= */
@@ -499,9 +512,13 @@ section {
   text-align: center;
 }
 
+.footer__inner--two {
+  grid-template-columns: 1fr;
+}
+
 @media (min-width: 860px) {
-  .footer__inner {
-    grid-template-columns: 1fr auto 1fr;
+  .footer__inner--two {
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     text-align: left;
     gap: 24px;
@@ -510,7 +527,7 @@ section {
 
 .footer__col {
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.7;
 }
 
